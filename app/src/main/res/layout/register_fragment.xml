@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -19,27 +15,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="0dp"
+                android:layout_marginTop="20dp"
                 android:text="@string/regidter_hint"
                 android:textAllCaps="false"
                 android:textColor="@color/red"
-                android:layout_marginBottom="30dp"
+                android:layout_marginBottom="15dp"
                 android:textSize="@dimen/text_big_size"
                 android:textStyle="bold" />
-
-            <android.support.v7.widget.CardView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_gravity="center"
-                app:cardCornerRadius="30dp"
-                >
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/user_image_view_register"
-                    />
-            </android.support.v7.widget.CardView>
-
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:background="@color/red"
+                android:layout_marginBottom="20dp"
+                />
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -57,7 +47,7 @@
                     android:layout_gravity="center"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
-                    android:hint="@string/name_hint"
+                    android:hint="اسم الصيدليه"
                     android:drawableLeft="@drawable/ic_action_person"
                     android:inputType="textAutoComplete"
                     android:singleLine="true"
@@ -84,7 +74,7 @@
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
                     android:drawableLeft="@drawable/ic_action_call_drk"
-                    android:hint="@string/mobile_number_hint"
+                    android:hint="تلفون الصيدليه"
                     android:inputType="phone"
                     android:singleLine="true"
                     android:textAppearance="@style/TextAppearance.AppCompat"
@@ -102,6 +92,7 @@
 
                 <EditText
                     android:id="@+id/password_register_text"
+                    style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -109,7 +100,7 @@
                     android:layout_marginRight="30dp"
                     android:layout_weight="2"
                     android:drawableLeft="@drawable/ic_action_secure"
-                    android:hint="@string/password_hint"
+                    android:hint="رقم الترخيص"
                     android:inputType="textPassword"
                     android:padding="10dp"
                     android:textAppearance="@style/TextAppearance.AppCompat"
@@ -126,6 +117,7 @@
 
                 <EditText
                     android:id="@+id/confirm_password_register_text"
+                    style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -133,7 +125,7 @@
                     android:layout_marginRight="30dp"
                     android:layout_weight="2"
                     android:drawableLeft="@drawable/ic_action_secure"
-                    android:hint="@string/repeat_password_hint"
+                    android:hint="كلمة المرور"
                     android:inputType="textPassword"
                     android:padding="10dp"
                     android:textAppearance="@style/TextAppearance.AppCompat"
@@ -184,4 +176,4 @@
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-</LinearLayout>
+</layout>
