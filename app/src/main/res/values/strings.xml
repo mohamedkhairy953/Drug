@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Hatle Dawa</string>
+    <string name="app_name">           Hatle Dawa</string>
     <string name="create_account">Create Account</string>
     <string name="login_hint">Log in</string>
     <string name="singup">Sign Up</string>
@@ -40,4 +40,15 @@
     <string name="pharmacy_lisence_hint">Pharmacy License</string>
     <string name="upgrade">Upgrade</string>
     <string name="new_feed">New Feeds</string>
+    <string name="title_activity_main_tabbed">Drug</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <array name="drugTypeList">
+        <item> amp </item>
+        <item> suryp </item>
+        <item> susp </item>
+        <item> caps </item>
+        <item> tabs </item>
+    </array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
