@@ -18,6 +18,7 @@ public class UtilityDrugs {
                 .commit();
     }
 
+
     public static void showInnerFragment(Fragment c, int container, Fragment fragment) {
         FragmentManager fragmentManager = c.getChildFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
