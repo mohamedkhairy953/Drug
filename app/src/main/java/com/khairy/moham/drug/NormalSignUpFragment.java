@@ -32,17 +32,26 @@ public class NormalSignUpFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         b = DataBindingUtil.inflate(inflater, R.layout.register_normal_fragment, container, false);
+        b.signUpRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                phoneAuth();
+            }
+        });
+        return b.getRoot();
+    }
+
+    private void phoneAuth() {
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         if (firebaseAuth.getCurrentUser() != null) {
             String phoneNumber = firebaseAuth.getCurrentUser().getPhoneNumber();
             if (!phoneNumber.isEmpty())
                 UtilityDrugs.showFragment((MainActivity) getActivity(), R.id.container, new LoginFragment());
-            else
-                startActivityForResult(AuthUI.getInstance().createSignInIntentBuilder().setAvailableProviders(
-                        Arrays.asList(new AuthUI.IdpConfig.Builder(AuthUI.PHONE_VERIFICATION_PROVIDER).build())).build()
-                        , REQUEST_CODE);
-        }
-        return b.getRoot();
+
+        } else
+            startActivityForResult(AuthUI.getInstance().createSignInIntentBuilder().setAvailableProviders(
+                    Arrays.asList(new AuthUI.IdpConfig.Builder(AuthUI.PHONE_VERIFICATION_PROVIDER).build())).build()
+                    , REQUEST_CODE);
     }
 
     @Override

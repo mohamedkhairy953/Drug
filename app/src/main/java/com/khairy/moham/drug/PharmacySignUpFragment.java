@@ -26,6 +26,12 @@ public class PharmacySignUpFragment extends Fragment {
                 UtilityDrugs.showFragment((MainActivity) getActivity(),R.id.container,new LoginFragment());
             }
         });
+        b.signUpRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //todo save data to the database pharmacy table
+            }
+        });
         return b.getRoot();
     }
 }

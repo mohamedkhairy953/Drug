@@ -22,6 +22,8 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class MainTabbedActivity extends AppCompatActivity implements AlertDialog.OnClickListener {
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
@@ -34,11 +36,11 @@ public class MainTabbedActivity extends AppCompatActivity implements AlertDialog
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_tabbed);
         postDialog = new AddPostDialog(this);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
-        mViewPager = (ViewPager) findViewById(R.id.container);
+        mViewPager = findViewById(R.id.container);
         final int pageMargin = (int) TypedValue.applyDimension(
                 TypedValue.COMPLEX_UNIT_DIP, 4, getResources()
                         .getDisplayMetrics());
@@ -47,15 +49,15 @@ public class MainTabbedActivity extends AppCompatActivity implements AlertDialog
         mViewPager.setCurrentItem(9);
 
         mViewPager.setAdapter(mSectionsPagerAdapter);
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        TabLayout tabLayout = findViewById(R.id.tabs);
         tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.white));
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              postDialog.show();
+                postDialog.show();
             }
         });
 
@@ -65,21 +67,16 @@ public class MainTabbedActivity extends AppCompatActivity implements AlertDialog
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main_tabbed, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.action_logout) {
+            if (FirebaseAuth.getInstance() != null)
+                FirebaseAuth.getInstance().signOut();
         }
 
         return super.onOptionsItemSelected(item);
@@ -87,7 +84,7 @@ public class MainTabbedActivity extends AppCompatActivity implements AlertDialog
 
     @Override
     public void onClick(DialogInterface dialogInterface, int i) {
-
+       // todo save post data to database post table
     }
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
@@ -115,7 +112,6 @@ public class MainTabbedActivity extends AppCompatActivity implements AlertDialog
 
         @Override
         public int getCount() {
-            // Show 3 total pages.
             return 3;
         }
 

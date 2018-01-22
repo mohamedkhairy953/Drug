@@ -33,12 +33,15 @@ public class LoginFragment extends Fragment implements DialogInterface.OnClickLi
         b.signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showDialog();
+               // showDialog();
+                UtilityDrugs.showFragment((MainActivity) getActivity(), R.id.container, new PharmacySignUpFragment());
             }
         });
         b.login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Todo -1 check if phone exist  2- getType of phone if user or pharmacy
+                // Todo -3 if user just login to tabbed activity -4 if pharmacy ask for password first
                 startActivity(new Intent(getContext(), MainTabbedActivity.class));
             }
         });
