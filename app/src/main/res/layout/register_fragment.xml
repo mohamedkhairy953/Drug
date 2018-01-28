@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="user"
+            type="com.khairy.moham.drug.Pharmacy"></variable>
+
+    </data>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -8,35 +17,34 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginBottom="15dp"
                 android:layout_marginTop="20dp"
                 android:text="@string/regidter_hint"
                 android:textAllCaps="false"
                 android:textColor="@color/red"
-                android:layout_marginBottom="15dp"
                 android:textSize="@dimen/text_big_size"
                 android:textStyle="bold" />
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
+                android:layout_marginBottom="20dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
-                android:background="@color/red"
-                android:layout_marginBottom="20dp"
-                />
+                android:background="@color/red" />
+
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:theme="@style/MyEditTextTheme"
                 app:hintTextAppearance="@style/FloatingLabel">
-
 
 
                 <EditText
@@ -47,15 +55,15 @@
                     android:layout_gravity="center"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
-                    android:hint="اسم الصيدليه"
                     android:drawableLeft="@drawable/ic_action_person"
+                    android:hint="اسم الصيدليه"
+                    android:text="@{user.pharmacyName}"
                     android:inputType="textAutoComplete"
                     android:singleLine="true"
                     android:textAppearance="@style/TextAppearance.AppCompat"
                     android:textSize="@dimen/text_size" />
 
             </android.support.design.widget.TextInputLayout>
-
 
 
             <android.support.design.widget.TextInputLayout
@@ -75,6 +83,8 @@
                     android:layout_marginRight="30dp"
                     android:drawableLeft="@drawable/ic_action_call_drk"
                     android:hint="تلفون الصيدليه"
+                    android:text="@{user.pharmacyPhone}"
+
                     android:inputType="phone"
                     android:singleLine="true"
                     android:textAppearance="@style/TextAppearance.AppCompat"
@@ -82,6 +92,33 @@
 
             </android.support.design.widget.TextInputLayout>
 
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:theme="@style/MyEditTextTheme"
+                app:hintTextAppearance="@style/FloatingLabel">
+
+                <EditText
+                    android:id="@+id/licence_register_text"
+                    style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_weight="2"
+                    android:drawableLeft="@drawable/ic_action_secure"
+                    android:hint="رقم الترخيص"
+                    android:text="@={user.pharmacyLicence}"
+
+                    android:inputType="textPassword"
+                    android:padding="10dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textSize="@dimen/text_size" />
+
+            </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -100,40 +137,15 @@
                     android:layout_marginRight="30dp"
                     android:layout_weight="2"
                     android:drawableLeft="@drawable/ic_action_secure"
-                    android:hint="رقم الترخيص"
-                    android:inputType="textPassword"
-                    android:padding="10dp"
-                    android:textAppearance="@style/TextAppearance.AppCompat"
-                    android:textSize="@dimen/text_size" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:theme="@style/MyEditTextTheme"
-                app:hintTextAppearance="@style/FloatingLabel">
-
-                <EditText
-                    android:id="@+id/confirm_password_register_text"
-                    style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
-                    android:layout_weight="2"
-                    android:drawableLeft="@drawable/ic_action_secure"
                     android:hint="كلمة المرور"
+                    android:text="@={user.pharmacyPassword}"
+
                     android:inputType="textPassword"
                     android:padding="10dp"
                     android:textAppearance="@style/TextAppearance.AppCompat"
                     android:textSize="@dimen/text_size" />
 
             </android.support.design.widget.TextInputLayout>
-
-
 
 
             <Button

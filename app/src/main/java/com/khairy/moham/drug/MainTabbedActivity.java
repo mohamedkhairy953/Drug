@@ -133,4 +133,9 @@ public class MainTabbedActivity extends AppCompatActivity implements AlertDialog
 
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }

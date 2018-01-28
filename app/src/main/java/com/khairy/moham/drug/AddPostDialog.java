@@ -1,6 +1,7 @@
 package com.khairy.moham.drug;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -9,6 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 /**
  * Created by mohsallam on 1/15/2018.
@@ -19,6 +23,8 @@ public class AddPostDialog extends Dialog {
     private Context context;
     private OnClickListener listener;
     Button addPost;
+    private EditText concentrationEt, nameEt;
+    private Spinner typeSpinner;
 
     public AddPostDialog(@NonNull Context context, DialogInterface.OnClickListener listener) {
         super(context);
@@ -28,7 +34,7 @@ public class AddPostDialog extends Dialog {
 
     public AddPostDialog(MainTabbedActivity mainTabbedActivity) {
         super(mainTabbedActivity);
-        this.listener=mainTabbedActivity;
+        this.listener = mainTabbedActivity;
         this.context = mainTabbedActivity;
     }
 
@@ -38,6 +44,9 @@ public class AddPostDialog extends Dialog {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.add_post);
         addPost = findViewById(R.id.post_add_post);
+        concentrationEt = findViewById(R.id.drug_con_add_post);
+        nameEt = findViewById(R.id.drug_name_add_post);
+        typeSpinner = findViewById(R.id.drug_type_add_post);
         addPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,7 +58,26 @@ public class AddPostDialog extends Dialog {
     }
 
     private void onAddPostClicked() {
-        dismiss();
-        listener.onClick(this, ADD_POST);
+        ProgressDialog dialog = ProgressDialog.show(context, "", "جارى اضافة الطلب");
+        new PostDataModel().addPostToFirebase(getPost(), new ResponseInterface.SuccessFail() {
+            @Override
+            public void failed(String errrorMsg) {
+                Toast.makeText(context, errrorMsg, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void success() {
+                dismiss();
+                listener.onClick(AddPostDialog.this, ADD_POST);
+            }
+        });
+
+    }
+
+    private PostModel getPost() {
+
+        return new PostModel(nameEt.getText().toString()
+                , concentrationEt.getText().toString()
+                , typeSpinner.getSelectedItem().toString());
     }
 }
