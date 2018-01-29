@@ -7,7 +7,6 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
@@ -58,15 +57,17 @@ public class AddPostDialog extends Dialog {
     }
 
     private void onAddPostClicked() {
-        ProgressDialog dialog = ProgressDialog.show(context, "", "جارى اضافة الطلب");
+        final ProgressDialog dialog = ProgressDialog.show(context, "", "جارى اضافة الطلب");
         new PostDataModel().addPostToFirebase(getPost(), new ResponseInterface.SuccessFail() {
             @Override
             public void failed(String errrorMsg) {
+                dialog.dismiss();
                 Toast.makeText(context, errrorMsg, Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void success() {
+                dialog.dismiss();
                 dismiss();
                 listener.onClick(AddPostDialog.this, ADD_POST);
             }
@@ -75,9 +76,13 @@ public class AddPostDialog extends Dialog {
     }
 
     private PostModel getPost() {
-
+        String userKey = "uuu";
+        SessionUser user = new SessionUser(context);
+        if (!user.isEmpty())
+            userKey = user.retreiveUserSession().key;
         return new PostModel(nameEt.getText().toString()
                 , concentrationEt.getText().toString()
-                , typeSpinner.getSelectedItem().toString());
+                , typeSpinner.getSelectedItem().toString()
+                , userKey);
     }
 }

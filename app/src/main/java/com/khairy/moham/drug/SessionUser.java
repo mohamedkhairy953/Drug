@@ -28,19 +28,19 @@ public class SessionUser {
     }
 
     public model retreiveUserSession() {
-        String key = "";//"No name defined" is the default value.
+        String key = "";//"No key defined" is the default value.
         int type = 0; //0 is the default value.
 
         SharedPreferences prefs = context.getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
         String restoredText = prefs.getString("key", null);
         if (restoredText != null) {
-            key = prefs.getString("key", "No name defined");
+            key = prefs.getString("key", "No key defined");
             type = prefs.getInt("type", 0);
         }
         return new model(key, type);
     }
 
-    boolean isEmplty() {
+    boolean isEmpty() {
         model model = retreiveUserSession();
         return model.type == 0;
     }
@@ -50,11 +50,11 @@ public class SessionUser {
     }
 
     class model {
-        String name;
+        String key;
         int type;
 
         public model(String name, int type) {
-            this.name = name;
+            this.key = name;
             this.type = type;
         }
     }

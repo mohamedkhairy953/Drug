@@ -14,6 +14,7 @@ public class UtilityDrugs {
     public static final String PHARMACY_CHILD="pharmacies";
     public static final String USER_CHILD="Users";
     public static final String POSTS_CHILD="posts";
+    public static final String pharmaciesHave_child="pharmaciesHave";
     public static void showFragment(AppCompatActivity c, int container, Fragment fragment) {
         FragmentManager fragmentManager = c.getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();

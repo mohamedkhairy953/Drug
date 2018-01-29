@@ -1,11 +1,17 @@
 package com.khairy.moham.drug;
 
 
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.khairy.moham.drug.databinding.UserPostesFragmentBinding;
 
 
 /**
@@ -13,6 +19,7 @@ import android.view.ViewGroup;
  */
 public class NewsFeedFragment extends Fragment {
 
+    UserPostesFragmentBinding b;
 
     public NewsFeedFragment() {
         // Required empty public constructor
@@ -23,7 +30,12 @@ public class NewsFeedFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.user_postes_fragment, container, false);
+        b = DataBindingUtil.inflate(inflater, R.layout.user_postes_fragment, container, false);
+        b.userRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        RecyclerView.ItemDecoration  decoration=new DividerItemDecoration(getContext(),DividerItemDecoration.HORIZONTAL);
+        b.userRecyclerView.addItemDecoration(decoration);
+        // todo set Adapter
+        return b.getRoot();
     }
 
 }

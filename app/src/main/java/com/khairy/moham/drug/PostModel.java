@@ -10,15 +10,19 @@ public class PostModel {
     private String type;
     private String name;
     private String concentration;
+    private String userKey;
+    private PharmacyHave pharmacy;
+    private String fullNameInPost = name + " " + concentration + "   " + type;
 
     public PostModel() {
     }
 
-    public PostModel(String type, String name, String concentration) {
+    public PostModel(String name, String type, String concentration, String userKey) {
 
         this.type = type;
         this.name = name;
         this.concentration = concentration;
+        this.userKey = userKey;
     }
 
     public String getType() {
@@ -47,5 +51,25 @@ public class PostModel {
 
     public String generateKey() {
         return name + new Random().nextInt(1000000);
+    }
+
+    public String getUserKey() {
+        return userKey;
+    }
+
+    public void setUserKey(String userKey) {
+        this.userKey = userKey;
+    }
+
+    public PharmacyHave getPharmacy() {
+        return pharmacy;
+    }
+
+    public void setPharmacy(PharmacyHave pharmacy) {
+        this.pharmacy = pharmacy;
+    }
+
+    public String getFullNameInPost() {
+        return name + " " + concentration + "   " + type;
     }
 }
