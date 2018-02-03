@@ -6,17 +6,20 @@ package com.khairy.moham.drug;
 
 class PharmacyHave {
 
-    private String pharmacyKey;
+    private String pharmacy1;
+
+    public PharmacyHave() {
+    }
 
     public PharmacyHave(String pharmacyKey) {
-        this.pharmacyKey = pharmacyKey;
+        this.pharmacy1 = pharmacyKey;
     }
 
     public String getPharmacyKey() {
-        return pharmacyKey;
+        return pharmacy1;
     }
 
     public void setPharmacyKey(String pharmacyKey) {
-        this.pharmacyKey = pharmacyKey;
+        this.pharmacy1 = pharmacyKey;
     }
 }

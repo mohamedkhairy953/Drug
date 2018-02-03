@@ -7,50 +7,50 @@ import java.util.Random;
  */
 
 public class PostModel {
-    private String type;
-    private String name;
-    private String concentration;
+
+    private String drugType;
+    private String drugName;
+    private String drugConcentration;
     private String userKey;
-    private PharmacyHave pharmacy;
-    private String fullNameInPost = name + " " + concentration + "   " + type;
+    private PharmacyHave pharmaciesHave;
 
     public PostModel() {
     }
 
-    public PostModel(String name, String type, String concentration, String userKey) {
+    public PostModel(String drugName, String type, String drugConcentration, String userKey) {
 
-        this.type = type;
-        this.name = name;
-        this.concentration = concentration;
+        this.drugType = type;
+        this.drugName = drugName;
+        this.drugConcentration = drugConcentration;
         this.userKey = userKey;
     }
 
-    public String getType() {
-        return type;
+    public String getDrugType() {
+        return drugType;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setDrugType(String type) {
+        this.drugType = type;
     }
 
-    public String getName() {
-        return name;
+    public String getDrugName() {
+        return drugName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDrugName(String drugName) {
+        this.drugName = drugName;
     }
 
-    public String getConcentration() {
-        return concentration;
+    public String getDrugConcentration() {
+        return drugConcentration;
     }
 
-    public void setConcentration(String concentration) {
-        this.concentration = concentration;
+    public void setDrugConcentration(String drugConcentration) {
+        this.drugConcentration = drugConcentration;
     }
 
     public String generateKey() {
-        return name + new Random().nextInt(1000000);
+        return drugName + new Random().nextInt(1000000);
     }
 
     public String getUserKey() {
@@ -61,15 +61,15 @@ public class PostModel {
         this.userKey = userKey;
     }
 
-    public PharmacyHave getPharmacy() {
-        return pharmacy;
+    public PharmacyHave getPharmaciesHave() {
+        return pharmaciesHave;
     }
 
-    public void setPharmacy(PharmacyHave pharmacy) {
-        this.pharmacy = pharmacy;
+    public void setPharmaciesHave(PharmacyHave pharmacy) {
+        this.pharmaciesHave = pharmacy;
     }
 
     public String getFullNameInPost() {
-        return name + " " + concentration + "   " + type;
+        return drugName + " " + drugConcentration + "mg   " + drugType;
     }
 }

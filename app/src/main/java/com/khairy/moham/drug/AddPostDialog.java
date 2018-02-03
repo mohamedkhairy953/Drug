@@ -81,8 +81,8 @@ public class AddPostDialog extends Dialog {
         if (!user.isEmpty())
             userKey = user.retreiveUserSession().key;
         return new PostModel(nameEt.getText().toString()
-                , concentrationEt.getText().toString()
                 , typeSpinner.getSelectedItem().toString()
+                , concentrationEt.getText().toString()
                 , userKey);
     }
 }
